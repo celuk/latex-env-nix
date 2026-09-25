@@ -1,0 +1,69 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath,amssymb}
+\usepackage{hyperref}
+
+\title{Dummy Example Document}
+\author{nix-env}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introduction}
+
+This is a dummy document for testing the LaTeX + draw.io build
+environment. It is compiled from the repository root with
+\texttt{make}, so all paths (e.g.\ \texttt{figures/}) are relative to
+the repository root.
+
+Figure~\ref{fig:example} is exported from
+\texttt{drawio/example.xml} by running \texttt{make xps} (or
+\texttt{make xp example}) before \texttt{make}; \texttt{make
+allwithfigs} does both in one go.
+
+\begin{figure}[htbp]
+  \centering
+  \IfFileExists{figures/example.pdf}{%
+    \includegraphics[width=0.8\textwidth]{figures/example.pdf}%
+  }{%
+    \fbox{Figure missing --- run \texttt{make xps} to export \texttt{drawio/example.xml}.}%
+  }
+  \caption{Example draw.io figure exported to PDF.}
+  \label{fig:example}
+\end{figure}
+
+\section{A Dummy Table}
+
+Table~\ref{tab:targets} lists the most common build targets. It can
+also be rendered as a standalone PNG with \texttt{make tables2png}.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Example build targets}
+  \label{tab:targets}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    Target & Input & Output \\
+    \midrule
+    \texttt{make xps} & \texttt{drawio/*.xml} & \texttt{figures/*.pdf} \\
+    \texttt{make} & \texttt{latex/main.tex} & \texttt{main.pdf} \\
+    \texttt{make pdfs2png} & \texttt{figures/*.pdf} & \texttt{figures-png/*.png} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Some Math}
+
+A dummy equation to check the math setup:
+\begin{equation}
+  e^{i\pi} + 1 = 0.
+\end{equation}
+
+\end{document}
